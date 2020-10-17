@@ -4,6 +4,14 @@
 #include "vertex.h"
 #include <limits>
 #include <list>
+#include<iostream>
+#include<stdio.h>
+#include<algorithm>
+#include<vector>
+#include<map>
+
+using namespace std;
+
 #define INF std::numeric_limits<int>::max()
 
 /*
@@ -11,17 +19,21 @@
 */
 class graph {
 private:
-    unsigned long size;
-    std::list<std::string> *V;
+    int size;
+    std::vector<vertex*> V;
 
 public:
-    graph(ul);
+    graph(int);
     ~graph();
 
-    void insert(std::string v1, std::string v2);
+    void insert(std::map<int,string> v1);
+    void insert(std::map<int,string> v1, string v2);
     void mostrar_cores();
     bool pintar();
 };
+
+
+
 
 #endif // GRAPH_H
 

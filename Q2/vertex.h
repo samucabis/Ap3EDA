@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <string>
-#define ul unsigned long
+#include <map>
 
 // NOME: JOSE GABRIEL BERNARDES DE ALMEIDA E SAMUEL RIBEIRO BEZERRA 
 // MATRICULA: 403958 / 393978
@@ -16,15 +16,15 @@ enum cores {R, B, SCOR};
 
 class vertex {
 public:
-    ul chave;
-    ul d;
+    std::map<int,std::string> chave;
+    int d;
     std::string valor;
     cores cor;
-    vertex *pai;
+    vertex *patrao;
     bool visitei;
     std::vector<vertex*> adj_list;
 
-    vertex(ul);
+    vertex(std::map <int,std::string>);
     ~vertex();
 
     void make_pair(vertex*);

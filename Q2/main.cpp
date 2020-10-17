@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-
+#include <vector>
 #include "graph.h"
 
 // NOME: JOSE GABRIEL BERNARDES DE ALMEIDA E SAMUEL RIBEIRO BEZERRA 
@@ -15,6 +15,14 @@ using namespace std;
 		Aqui na main abrimos o arquivo grafos.txt e os valores são lidos como pedido no enunciado da questão 1
 */
 
+bool verifica(std::string texto){
+	if(texto == "1" || texto == "2" || texto == "3" || texto == "4" || texto == "5" 
+								|| texto == "6" || texto == "7" || texto == "8" || texto == "9" || texto == "0" )
+								return true;
+	return false;
+}
+
+
 int main() {
 	ifstream file = ifstream("grafos.txt");
 	graph *g = nullptr;
@@ -22,32 +30,48 @@ int main() {
 	if(!file) {
 		cout << "Arquivo grafos.txt nao encontrado" << endl;
 	} else {
-		ul n;
-		std::string c1, c2;
-		
+
+		int n;
+		std::string c1, c2, c0;	
+		map<int,string> par;
+		int aux;
+
 		while(file >> n) {
+
+			int cont = 0;
+
 			if(n == 0)
 				break;
-				
+
+			aux = n;	
+
 			g = new graph(n);
+
+			file >> c0;
+
+			par[cont] = c0;
+			g->insert(par);
+			aux --;
+			cont++;
+
 			
-			while(file >> c1 >> c2) {
-				if(c1 == "0" && c2 == "0")
+
+			while(aux != 0) {
+				file >> c1 >> c2;
+				if(verifica(c1))
 					break;
-					
-				g->insert(c1, c2);
+				par[cont] = c1;
+				g->insert(par)
+				cont++;
+				
+				aux--;
 			}
 			
-			if(g->pintar()) {
-				cout << "SIM" << endl;
-				g->mostrar_cores();
-			} else {
-				cout << "NAO" << endl;
-			}
 		}
 	}
 
-    delete g;
+
+    //delete g;
     
     return 0;
 }

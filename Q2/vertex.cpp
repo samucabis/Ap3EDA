@@ -1,4 +1,5 @@
 #include "vertex.h"
+#include <map>
 
 // NOME: JOSE GABRIEL BERNARDES DE ALMEIDA E SAMUEL RIBEIRO BEZERRA 
 // MATRICULA: 403958 / 393978
@@ -7,11 +8,11 @@
    	 Construtor da classe vértice.
  */
 
-vertex::vertex(std::string chave) {
+vertex::vertex(std::map <int,std::string> chave) {
     this->chave = chave;
     this->cor = SCOR;
     this->d = 0;
-    this->pai = nullptr;
+    this->patrao = nullptr;
     this->visitei = false;
     this->adj_list = std::vector<vertex*>();
 }
