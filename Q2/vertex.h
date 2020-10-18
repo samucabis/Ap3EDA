@@ -10,7 +10,6 @@
 
 /*
         Classe vértice, onde tem os atributos da classe.
-        R e B são as cores e SCOR quer dizer que não foi pintado ainda.
 */
 enum cores {R, B, SCOR};
 

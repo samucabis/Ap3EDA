@@ -74,7 +74,7 @@ int main() {
 	}
 
 
-    //delete g;
+    delete g;
     
     return 0;
 }
