@@ -16,7 +16,7 @@ enum cores {R, B, SCOR};
 
 class vertex {
 public:
-    std::map<int,std::string> chave;
+    std::pair<std::string,std::string> chave;
     int d;
     std::string valor;
     cores cor;
@@ -24,7 +24,7 @@ public:
     bool visitei;
     std::vector<vertex*> adj_list;
 
-    vertex(std::map <int,std::string>);
+    vertex(std::pair<std::string,std::string>);
     ~vertex();
 
     void make_pair(vertex*);

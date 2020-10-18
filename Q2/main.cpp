@@ -33,7 +33,7 @@ int main() {
 
 		int n;
 		std::string c1, c2, c0;	
-		map<int,string> par;
+		std::pair<int,std::pair<std::string,std::string>> par;
 		int aux;
 
 		while(file >> n) {
@@ -43,29 +43,31 @@ int main() {
 			if(n == 0)
 				break;
 
-			aux = n;	
-
-			g = new graph(n);
-
-			file >> c0;
-
-			par[cont] = c0;
-			g->insert(par);
-			aux --;
-			cont++;
-
 			
 
+			aux = n;	
+			g = new graph(n);
+			file>>c0;
+			par	= make_pair(cont, make_pair(c0,""));
+			g->insert(par);
+			cont++;
+			aux--;
+
 			while(aux != 0) {
-				file >> c1 >> c2;
+				file >> c1>>c2;
 				if(verifica(c1))
 					break;
-				par[cont] = c1;
-				g->insert(par)
+				
+				par	= make_pair(cont, make_pair(c1, c2));
+				g->insert(par);
 				cont++;
 				
 				aux--;
+				//cout<<par.first<<' '<<par.second.first<<' '<< par.second.second<<endl;
 			}
+			g->ligamento();
+			g->exibirGraph();
+			
 			
 		}
 	}

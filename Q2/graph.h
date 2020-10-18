@@ -26,10 +26,11 @@ public:
     graph(int);
     ~graph();
 
-    void insert(std::map<int,string> v1);
-    void insert(std::map<int,string> v1, string v2);
-    void mostrar_cores();
-    bool pintar();
+    void insert(std::pair<int,std::pair<std::string,std::string>> v1);
+    void ligamento();
+    void exibirGraph();
+    void paredao();
+    
 };
 
 

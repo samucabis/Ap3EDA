@@ -4,45 +4,67 @@
 #include <queue>
 #include <list>
 #include <string>
-
-// NOME: JOSE GABRIEL BERNARDES DE ALMEIDA E SAMUEL RIBEIRO BEZERRA 
+int cont = 0;
+// NOME: JOSE GABRIEL BERNARDES DE ALMEIDA E SAMUEL RIBEIRO BEZERRA
 // MATRICULA: 403958 / 393978
 
 /*
         Construtor da classe graph
 */
-int cont = 0;
-graph::graph(int size) {
+graph::graph(int size)
+{
     this->size = size;
-    this->V = std::vector<vertex*>(size);
-
+    this->V = std::vector<vertex *>(size);
 }
 
-/*
-        Destrutor da classe
-*/
-graph::~graph() {
-    V.clear();
+void graph::insert(std::pair<int, pair<std::string, std::string>> par)
+{
+    V[par.first] = new vertex(par.second);
+    //V[par.first]->adj_list.push_back(V[retornaPatrao(par.second.second).indice]);
 }
+void graph::ligamento()
+{
+    for (int i = 0; i < V.size(); i++)
+    {
 
-/*
-        Função de inserir, ela recebe dois valores e depois procura no vetor de vértices o vertice certo para inserir o valor que será seu vizinho.
-*/
-void graph::insert(std::map<int,string> v1) {
-    V[cont] = new vertex(v1);
-    cont++;
+        for (int j = 0; j < V.size(); j++)
+        {
+            if (V[i]->chave.second == V[j]->chave.first)
+            {
+                V[j]->d++;
+                V[i]->d++;
+                V[i]->adj_list.push_back(V[j]);
+                V[j]->adj_list.push_back(V[i]);
+                break;
+            }
+        }
+    }
 }
-void graph::insert(std::map<int,string> v1, string v2) {
+void graph::paredao()
+{
+    int maior, index = 0;
+    maior = V[0]->d;
+    for (int i = 0; i < V.size(); i++)
+    {
 
-
+        if (V[i]->d > maior)
+        {
+            index = i;
+            maior = V[i]->d;
+        }
+    }
 }
-
-/*      
-
-        Função de pintar os vertices como a questão pede, primeiro a gente pinta todos os vertices como nulo.
-        Depois a gente faz uma busca verificando se cada node foi pintado, se o node u for nulo então pinto de R senão 
-        não mudamos sua cor. Em seguida percorremos cada vizinho v de u, e verificamos se a cor de u for R e v for nulo 
-        pintamos v de B, caso contrario retornamos falso.
-
-
-*/
+void graph::exibirGraph()
+{
+    for (vertex *v : V)
+    {
+        cout << v->chave.first << endl;
+        cout << "Adjacentes: "
+             << "(" << v->d << ") ";
+        for (int i = 0; i < v->adj_list.size(); i++)
+        {
+            cout << "-" << v->adj_list.at(i)->chave.first;
+        }
+        cout << endl;
+    }
+}

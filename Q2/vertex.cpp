@@ -8,9 +8,8 @@
    	 Construtor da classe vértice.
  */
 
-vertex::vertex(std::map <int,std::string> chave) {
+vertex::vertex(std::pair<std::string,std::string> chave) {
     this->chave = chave;
-    this->cor = SCOR;
     this->d = 0;
     this->patrao = nullptr;
     this->visitei = false;
