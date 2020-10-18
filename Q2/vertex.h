@@ -21,7 +21,7 @@ public:
     std::string valor;
     cores cor;
     vertex *patrao;
-    bool visitei;
+    bool expulso;
     std::vector<vertex*> adj_list;
 
     vertex(std::pair<std::string,std::string>);

@@ -17,10 +17,12 @@ graph::graph(int size)
     this->V = std::vector<vertex *>(size);
 }
 
+/*
+    Metodo de inserir o vertex no grafo,
+*/
 void graph::insert(std::pair<int, pair<std::string, std::string>> par)
 {
     V[par.first] = new vertex(par.second);
-    //V[par.first]->adj_list.push_back(V[retornaPatrao(par.second.second).indice]);
 }
 void graph::ligamento()
 {
@@ -40,19 +42,51 @@ void graph::ligamento()
         }
     }
 }
+
+std::pair<int,int> graph::Maximo(){
+    pair<int,int> par = make_pair(0,-1);
+    for(int i = 0; i < V.size(); i++){
+            if(V[i]->d > par.second && !V[i]->expulso){
+                par.second = V[i]->d;
+                par.first = i;
+            }
+     }
+    return par;
+}
+
 void graph::paredao()
 {
-    int maior, index = 0;
-    maior = V[0]->d;
-    for (int i = 0; i < V.size(); i++)
-    {
-
-        if (V[i]->d > maior)
-        {
-            index = i;
-            maior = V[i]->d;
+    int maior,index;
+    maior = Maximo().second;
+    index = Maximo().first;
+    while(maior--){
+        if(V.size() == 2)
+            break;
+        if(Maximo().second == 0)
+            break;
+        maior = Maximo().second;
+        index = Maximo().first;
+        V[index]->d = -1;
+        V[index]->expulso = true;
+        for( vertex* v : V[index]->adj_list){
+            v->d--;
         }
+    }  
+
+}
+void graph::vao(){
+    cont = 0;
+    if(V.size() > 2){
+        for( vertex *v : V){
+            if(v->d == 0)
+                cont++;
+        }
+    }else{
+        cout << V[0]->d <<  " Não" << endl;
+        return;
     }
+    cout << cont << " Sim" << endl;
+    
 }
 void graph::exibirGraph()
 {

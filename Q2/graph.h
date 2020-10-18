@@ -30,6 +30,8 @@ public:
     void ligamento();
     void exibirGraph();
     void paredao();
+    std::pair<int,int> Maximo();
+    void vao();
     
 };
 

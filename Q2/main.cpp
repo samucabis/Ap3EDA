@@ -63,10 +63,11 @@ int main() {
 				cont++;
 				
 				aux--;
-				//cout<<par.first<<' '<<par.second.first<<' '<< par.second.second<<endl;
 			}
 			g->ligamento();
-			g->exibirGraph();
+			//g->exibirGraph();
+			g->paredao();
+			g->vao();
 			
 			
 		}

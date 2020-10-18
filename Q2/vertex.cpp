@@ -12,7 +12,7 @@ vertex::vertex(std::pair<std::string,std::string> chave) {
     this->chave = chave;
     this->d = 0;
     this->patrao = nullptr;
-    this->visitei = false;
+    this->expulso = false;
     this->adj_list = std::vector<vertex*>();
 }
 
