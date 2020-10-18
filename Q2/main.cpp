@@ -12,7 +12,7 @@
 using namespace std;
 
 /*
-		Aqui na main abrimos o arquivo grafos.txt e os valores são lidos como pedido no enunciado da questão 1
+		Aqui na main abrimos o arquivo grafos.txt e os valores são lidos como pedido no enunciado da questão 2
 */
 
 bool verifica(std::string texto){
@@ -22,6 +22,14 @@ bool verifica(std::string texto){
 	return false;
 }
 
+/*	
+	Aqui na main, lemos o arquivo do txt e pegamos o primeiro elemento que é o n
+	e criamos um graph com n, e depois lemos o segundo elemento do txt 
+	que é o dono da empresa e criamos um vertice no grafo com o dono da empresa
+	e depois executamos para cada linha adicionando um vertice com um par<string,string>
+	até chegarmos no fim do primeiro teste.
+
+*/
 
 int main() {
 	ifstream file = ifstream("grafos.txt");
